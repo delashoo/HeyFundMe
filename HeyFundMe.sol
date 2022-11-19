@@ -18,13 +18,7 @@ contract FundMe {
 
     function GetPrice() public view returns (uint256) {
         AggregatorV3Interface priceFeed = AggregatorV3Interface(0xD4a33860578De61DBAbDc8BFdb98FD742fA7028e);
-        (
-        uint80 roundId,
-        int256 answer,
-        uint256 startedAt,
-        uint256 updatedAt,
-        uint80 answeredInRound)
-        = priceFeed.latestRoundData();
+        (,int256 answer,,,) = priceFeed.latestRoundData();
         return uint256(answer);
     }
 }
